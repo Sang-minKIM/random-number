@@ -23,6 +23,9 @@
             let randomNumber;
             function onClick(range) {
                 randomNumber = Math.floor(Math.random() * range * 10) + 1;
+                while (randomNumber < range) {
+                    randomNumber = Math.floor(Math.random() * range * 10) + 1;
+                }
                 number.innerText = randomNumber;
             }
 
