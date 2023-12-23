@@ -10,6 +10,7 @@
         <div class="container">
             <h1 class="num">아래 버튼을 눌러보세요</h1>
             <div class="btns">
+                <button onclick="readOutLoud()">읽기</button>
                 <button onclick="onClick(10)">10의 자리</button>
                 <button onclick="onClick(100)">100의 자리</button>
                 <button onclick="onClick(1000)">1,000의 자리</button>
@@ -19,10 +20,23 @@
         </div>
         <script>
             const number = document.querySelector(".num");
-
+            let randomNumber;
             function onClick(range) {
-                const randomNumber = Math.floor(Math.random() * range * 10) + 1;
+                randomNumber = Math.floor(Math.random() * range * 10) + 1;
                 number.innerText = randomNumber;
+            }
+
+            function readOutLoud() {
+                if (randomNumber) {
+                    const speech = new SpeechSynthesisUtterance(randomNumber.toString());
+                    speech.lang = "ko-KR";
+                    speech.volume = 1;
+                    speech.rate = 1;
+                    speech.pitch = 1;
+                    window.speechSynthesis.speak(speech);
+                } else {
+                    alert("숫자를 먼저 생성하세요!");
+                }
             }
         </script>
     </body>
