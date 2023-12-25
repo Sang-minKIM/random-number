@@ -30,15 +30,20 @@
             }
 
             function readOutLoud() {
-                if (randomNumber) {
-                    const speech = new SpeechSynthesisUtterance(randomNumber.toString());
-                    speech.lang = "ko-KR";
-                    speech.volume = 1;
-                    speech.rate = 1;
-                    speech.pitch = 1;
-                    window.speechSynthesis.speak(speech);
+                // Web Speech API를 지원하는지 확인
+                if ("speechSynthesis" in window) {
+                    if (randomNumber) {
+                        const speech = new SpeechSynthesisUtterance(randomNumber.toString());
+                        speech.lang = "ko-KR";
+                        speech.volume = 1;
+                        speech.rate = 1;
+                        speech.pitch = 1;
+                        window.speechSynthesis.speak(speech);
+                    } else {
+                        alert("숫자를 먼저 생성하세요!");
+                    }
                 } else {
-                    alert("숫자를 먼저 생성하세요!");
+                    alert("죄송합니다. 읽기 기능을 사용하시려면 다른 브라우저를 이용해주세요.");
                 }
             }
         </script>
