@@ -16,6 +16,7 @@
                 <button onclick="onClick(1000)">1,000의 자리</button>
                 <button onclick="onClick(10000)">10,000의 자리</button>
                 <button onclick="onClick(100000)">100,000의 자리</button>
+                <button onclick="onClick(1000000)">1,000,000의 자리</button>
             </div>
         </div>
         <script>
@@ -26,7 +27,7 @@
                 while (randomNumber < range) {
                     randomNumber = Math.floor(Math.random() * range * 10) + 1;
                 }
-                number.innerText = randomNumber;
+                number.innerText = randomNumber.toLocaleString();
             }
 
             function readOutLoud() {
